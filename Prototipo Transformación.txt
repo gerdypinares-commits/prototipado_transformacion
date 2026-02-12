@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipo Senior Mode - Operador Móvil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Open+Sans', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .phone-container {
+            width: 375px;
+            height: 700px;
+            background: white;
+            border: 12px solid #333;
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin: 20px auto;
+        }
+
+        .screen-content {
+            padding: 24px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .senior-button {
+            background-color: #ffde00; /* Color llamativo para fácil visibilidad */
+            color: #000;
+            font-size: 1.25rem;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+            border: 2px solid #000;
+        }
+
+        .senior-button:active {
+            transform: scale(0.95);
+        }
+
+        .step-indicator {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .step-progress {
+            height: 100%;
+            background: #1d4ed8;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .hidden { display: none; }
+
+        /* Estilos específicos para modo senior */
+        .text-senior-lg { font-size: 1.5rem; line-height: 1.3; font-weight: 700; }
+        .text-senior-md { font-size: 1.1rem; line-height: 1.4; color: #374151; }
+
+        .icon-help {
+            position: absolute;
+            bottom: 80px;
+            right: 20px;
+            background: #e11d48;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="max-w-xl mx-auto pt-10 px-4 text-center">
+    <h1 class="text-2xl font-bold text-blue-900 mb-2">Modelo Integral de Validación Inclusiva</h1>
+    <p class="text-gray-600 mb-8">Prototipo de Baja Fidelidad (Senior Mode Enabled)</p>
+</div>
+
+<div class="phone-container">
+    <!-- BOTÓN WOW 3: EJECUTIVO ESPECIALIZADO SIEMPRE DISPONIBLE -->
+    <div class="icon-help" onclick="showModal('helpModal')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+    </div>
+
+    <!-- PANTALLA 1: BIENVENIDA -->
+    <div id="step1" class="screen-content">
+        <div>
+            <div class="step-indicator"><div class="step-progress" style="width: 25%;"></div></div>
+            <h2 class="text-senior-lg mb-6">¡Hola, Juan Pérez! 👋</h2>
+            <p class="text-senior-md mb-8">Estamos aquí para ayudarte a recuperar tu línea y tus contactos sin complicaciones.</p>
+            <div class="bg-blue-50 p-4 border-l-4 border-blue-600 rounded">
+                <p class="text-sm font-bold text-blue-800">SISTEMA INCLUSIVO:</p>
+                <p class="text-xs">Los botones son grandes y puedes pedir ayuda en cualquier momento.</p>
+            </div>
+        </div>
+        <div class="space-y-4">
+            <button onclick="nextStep(1, 2)" class="senior-button w-full">EMPEZAR AHORA</button>
+        </div>
+    </div>
+
+    <!-- PANTALLA 2: CAPTURA DNI -->
+    <div id="step2" class="screen-content hidden">
+        <div>
+            <div class="step-indicator"><div class="step-progress" style="width: 50%;"></div></div>
+            <h2 class="text-senior-lg mb-4">Paso 1: Foto del DNI</h2>
+            <p class="text-senior-md mb-6">Coloca tu carnet frente a la cámara.</p>
+            
+            <div class="border-4 border-dashed border-gray-300 rounded-xl h-48 flex items-center justify-center bg-gray-50 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            </div>
+            <p class="text-center text-sm text-gray-500 italic">"No te preocupes si sale borrosa, el sistema la arregla"</p>
+        </div>
+        <button onclick="nextStep(2, 3)" class="senior-button w-full">TOMAR FOTO</button>
+    </div>
+
+    <!-- PANTALLA 3: VALIDACIÓN HÍBRIDA (WOW 1) -->
+    <div id="step3" class="screen-content hidden">
+        <div>
+            <div class="step-indicator"><div class="step-progress" style="width: 75%;"></div></div>
+            <h2 class="text-senior-lg mb-4">Paso 2: Verifica tu identidad</h2>
+            <p class="text-senior-md mb-6">Mira a la cámara y sonríe.</p>
+            
+            <div class="relative w-40 h-40 mx-auto bg-gray-200 rounded-full border-4 border-blue-600 flex items-center justify-center overflow-hidden mb-4">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                <!-- Simulador de fallo para mostrar el WOW híbrido -->
+                <div id="retryOverlay" class="absolute inset-0 bg-red-500 bg-opacity-80 flex-col items-center justify-center hidden flex">
+                    <p class="text-white font-bold text-center px-2">¿Problemas con la cámara?</p>
+                </div>
+            </div>
+            
+            <p id="biometryMsg" class="text-center text-sm font-bold text-gray-600">Procesando biometría...</p>
+        </div>
+        
+        <div id="biometryActions" class="space-y-3">
+            <button onclick="simulateFailure()" class="senior-button w-full">LISTO</button>
+        </div>
+
+        <div id="hybridAction" class="space-y-3 hidden">
+            <p class="text-red-600 font-bold text-center">La huella digital no coincide</p>
+            <button onclick="showModal('videoCall')" class="senior-button w-full bg-green-500 border-green-700 text-white">📳 LLAMADA CON ASISTENTE</button>
+            <p class="text-xs text-center text-gray-500">Un experto validará tu identidad por video ahora mismo.</p>
+        </div>
+    </div>
+
+    <!-- PANTALLA FINAL -->
+    <div id="step4" class="screen-content hidden">
+        <div class="text-center">
+            <div class="mt-12 text-green-500 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h2 class="text-senior-lg mb-4">¡Todo listo!</h2>
+            <p class="text-senior-md mb-6">Tu chip ha sido validado con éxito.</p>
+            <div class="bg-gray-100 p-6 rounded-2xl">
+                <p class="font-bold mb-2">Resumen:</p>
+                <ul class="text-left text-sm space-y-2">
+                    <li>✅ Contactos recuperados</li>
+                    <li>✅ Envío a domicilio en 24h</li>
+                    <li>✅ Atención prioritaria</li>
+                </ul>
+            </div>
+        </div>
+        <button onclick="location.reload()" class="senior-button w-full">FINALIZAR</button>
+    </div>
+
+    <!-- MODALES / POPUPS -->
+    <div id="videoCall" class="absolute inset-0 bg-black bg-opacity-90 flex items-center justify-center p-6 hidden z-50">
+        <div class="text-center text-white">
+            <div class="w-24 h-24 bg-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center animate-pulse">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <p class="text-xl font-bold mb-4">Conectando con Ejecutivo Senior...</p>
+            <p class="mb-8">Estás hablando con: <br><span class="text-yellow-400 font-bold">Roberto (Especialista)</span></p>
+            <button onclick="closeModal('videoCall'); nextStep(3, 4)" class="senior-button w-full bg-white text-black">SIMULAR VALIDACIÓN OK</button>
+        </div>
+    </div>
+
+    <div id="helpModal" class="absolute inset-0 bg-white bg-opacity-95 flex items-center justify-center p-6 hidden z-50">
+        <div class="text-center">
+            <h3 class="text-2xl font-bold mb-6">¿Necesitas ayuda?</h3>
+            <p class="mb-8 text-lg">No te preocupes, un ejecutivo especializado te guiará paso a paso.</p>
+            <div class="space-y-4">
+                <a href="tel:123" class="senior-button block bg-red-600 text-white">LLAMAR AL 123</a>
+                <button onclick="closeModal('helpModal')" class="p-4 text-gray-500 font-bold">VOLVER</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function nextStep(current, next) {
+        document.getElementById('step' + current).classList.add('hidden');
+        document.getElementById('step' + next).classList.remove('hidden');
+    }
+
+    function simulateFailure() {
+        document.getElementById('biometryMsg').innerText = "Validando...";
+        setTimeout(() => {
+            document.getElementById('biometryMsg').innerText = "Fallo en biometría";
+            document.getElementById('biometryActions').classList.add('hidden');
+            document.getElementById('hybridAction').classList.remove('hidden');
+            document.getElementById('retryOverlay').classList.remove('hidden');
+        }, 1500);
+    }
+
+    function showModal(id) {
+        document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).classList.add('hidden');
+    }
+</script>
+
+</body>
+</html>
